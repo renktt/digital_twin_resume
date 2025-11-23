@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-gray-900 font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  body.dark {
+    @apply bg-dark-background text-gray-100;
+  }
+
+  /* Continuous page sections */
+  section {
+    min-height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+  }
+
+  /* Responsive sections */
+  section {
+    min-height: auto;
+    height: auto;
+  }
+
+  /* Optimize scroll behavior */
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2.5 bg-highlight text-white rounded-custom font-medium;
+    @apply hover:bg-opacity-90 transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-highlight focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-accent text-gray-800 rounded-custom font-medium;
+    @apply hover:bg-secondary transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-custom shadow-md p-6;
+    @apply transition-all duration-300 hover:shadow-lg;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .card:hover {
+    transform: translateY(-1px);
+    border-color: rgba(93, 134, 108, 0.2);
+  }
+
+  .dark .card {
+    @apply bg-dark-accent;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-highlight focus:border-transparent;
+    @apply transition-all duration-300;
+  }
+
+  .dark .input-field {
+    @apply bg-dark-secondary border-dark-secondary text-white;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-highlight;
+  }
+
+  .dark .section-title {
+    @apply text-dark-highlight;
+  }
+}
+
+@layer utilities {
+  .transition-custom {
+    transition: all 0.3s ease;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out;
+  }
+
+  /* Full-screen section utilities */
+  .section-container {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Smooth scroll optimization */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Wave animation for voice AI */
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.wave-bar {
+  animation: wave 1s ease-in-out infinite;
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5D866C;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a7055;
+}
+
+/* Smooth scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5D866C 0%, #C2A68C 100%);
+  transform-origin: 0%;
+  z-index: 9999;
+}
